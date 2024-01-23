@@ -6,6 +6,7 @@ export default function Home() {
      
      <h1 className="lg:text-4xl text-2xl font-semibold text-white">Bargain Bay Comming Soon...</h1>
      
+     
     </main>
   );
 }
