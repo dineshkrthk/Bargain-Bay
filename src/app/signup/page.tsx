@@ -1,15 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import logo from './logo2.jpg'
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import {
-//   faMagnifyingGlass,
-//   faEye,
-//   faCircleStop
-// } from "@fortawesome/free-solid-svg-icons";
-// <style>
-//   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
-// </style>
+
 
 const page = () => {
   return (
@@ -18,9 +10,9 @@ const page = () => {
      
       <div className='md:w-1/2 p-3'>
       
-            <h2  className="text-4xl  text-center font-family: 'Poppins', sans-serif;">Login</h2>
+            <h2  className="text-4xl  text-center font-family: 'Poppins', sans-serif;">SignUp</h2>
             <p className=" text-center text-sm mt-1">
-              Login to your account
+              create your account
             </p>
             <form action="#" className='flex flex-col gap-4 mt-6 p-2'>
               <div className='grid gap-4'>
@@ -29,14 +21,20 @@ const page = () => {
               </div>
               <div className='mt-2 relative'>
               <input type="password" placeholder='Password' className='border border-gray-400 py-1 px-2 w-full rounded-xl' />
-              {/* <FontAwesomeIcon className='absolute top-1/3 right-3'
-        icon={faEye}/> */}
-        <svg className="icon absolute top-1/3 right-3" viewBox="0 0 32 32" stroke-linecap="round">
+              <svg className="icon absolute top-1/3 right-3" viewBox="0 0 32 32" stroke-linecap="round">
         <path d="M4,16 C9,28 23,28 28,16" stroke-width="3" />
         <path d="M4,16 C9,4 23,4 28,16" stroke-width="3" />
         <circle cx="16" cy="16" r="4.5" stroke-width="5" />
       </svg>
               </div>
+              <div className='mt-2 relative'> 
+              <input type="password" placeholder='Confirm Password' className='border border-gray-400 py-1 px-2 w-full rounded-xl' />
+              <svg className="icon absolute top-1/3 right-3" viewBox="0 0 32 32" stroke-linecap="round">
+        <path d="M4,16 C9,28 23,28 28,16" stroke-width="3" />
+        <path d="M4,16 C9,4 23,4 28,16" stroke-width="3" />
+        <circle cx="16" cy="16" r="4.5" stroke-width="5" />
+      </svg>
+              </div>             
               
               <div className='mt-2'>
                 <input type="checkbox" className='border border-gray-400' />
@@ -45,7 +43,7 @@ const page = () => {
                 </span>
               </div>
               <div className='mt-3 mb-0'>
-                <button className=' rounded-xl w-full bg-orange-500 py-3 text-center text-white text-xl hover:bg-#ffb800 hover:scale-100 duration-300'>Login</button>
+                <button className=' rounded-xl w-full bg-orange-500 py-3 text-center text-white text-xl hover:bg-#ffb800 hover:scale-100 duration-300'>SignUp</button>
               </div>
               </form>
 
@@ -67,10 +65,10 @@ const page = () => {
                 <path fill="#4285F4" d="M48 48L17 24l-4-3 35-10z"/>
               </g>
               </svg>Login with Google</button>
-              <p className='mt-2 text-sm border-b border-gray-400 py-2'>Forgot your password</p>
+              {/* <p className='mt-2 text-sm border-b border-gray-400 py-2'>Forgot your password</p> */}
               <div className='mt-2 text-xs flex justify-between items-center'>
-                <p >Don't have an account?</p>
-                <button className='py-2 px-5 bg-white border rounded-xl hover:scale-100 duration-300'>Register</button>
+                <p >Already have an account?</p>
+                <button className='py-2 px-5 bg-white border rounded-xl hover:scale-100 duration-300'>Login</button>
               </div>
               
         
