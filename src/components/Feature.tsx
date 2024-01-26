@@ -82,7 +82,7 @@ export const Feature = () => {
 
           <div className="max-w-md sm:mx-auto sm:text-center">
             <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-yellow-200 sm:mx-auto sm:w-24 sm:h-24">
-            <svg className="h-12 w-12" fill="#000000" viewBox="0 0 24 24" ><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 10.5V7C17 6.73478 16.8946 6.48043 16.7071 6.29289C16.5196 6.10536 16.2652 6 16 6H4C3.73478 6 3.48043 6.10536 3.29289 6.29289C3.10536 6.48043 3 6.73478 3 7V17C3 17.2652 3.10536 17.5196 3.29289 17.7071C3.48043 17.8946 3.73478 18 4 18H16C16.2652 18 16.5196 17.8946 16.7071 17.7071C16.8946 17.5196 17 17.2652 17 17V13.5L21 17.5V6.5L17 10.5ZM8 15V9L12.5 12L8 15Z"></path> </g></svg>
+            <svg className="w-12 h-12" fill="#000000" viewBox="0 0 24 24" ><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M18,2H6A2,2,0,0,0,4,4V22l3-3,2,3,3-3,3,3,2-3,3,3V4A2,2,0,0,0,18,2ZM12,16H8a1,1,0,0,1,0-2h4a1,1,0,0,1,0,2Zm0-4H8a1,1,0,0,1,0-2h4a1,1,0,0,1,0,2Zm4,4H15a1,1,0,0,1,0-2h1a1,1,0,0,1,0,2Zm0-4H15a1,1,0,0,1,0-2h1a1,1,0,0,1,0,2Zm0-5H8A1,1,0,0,1,8,5h8a1,1,0,0,1,0,2Z"></path></g></svg>
             </div>
             <h6 className="mb-3 text-xl font-bold leading-5">Effortless Invoicing</h6>
             <p className="mb-3 text-sm text-gray-900">
@@ -92,7 +92,7 @@ export const Feature = () => {
 
           <div className="max-w-md sm:mx-auto sm:text-center">
             <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-yellow-200 sm:mx-auto sm:w-24 sm:h-24">
-            <svg className="w-12 h-12" fill="#000000" viewBox="0 0 24 24" ><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M18,2H6A2,2,0,0,0,4,4V22l3-3,2,3,3-3,3,3,2-3,3,3V4A2,2,0,0,0,18,2ZM12,16H8a1,1,0,0,1,0-2h4a1,1,0,0,1,0,2Zm0-4H8a1,1,0,0,1,0-2h4a1,1,0,0,1,0,2Zm4,4H15a1,1,0,0,1,0-2h1a1,1,0,0,1,0,2Zm0-4H15a1,1,0,0,1,0-2h1a1,1,0,0,1,0,2Zm0-5H8A1,1,0,0,1,8,5h8a1,1,0,0,1,0,2Z"></path></g></svg>
+            <svg className="h-12 w-12" fill="#000000" viewBox="0 0 24 24" ><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 10.5V7C17 6.73478 16.8946 6.48043 16.7071 6.29289C16.5196 6.10536 16.2652 6 16 6H4C3.73478 6 3.48043 6.10536 3.29289 6.29289C3.10536 6.48043 3 6.73478 3 7V17C3 17.2652 3.10536 17.5196 3.29289 17.7071C3.48043 17.8946 3.73478 18 4 18H16C16.2652 18 16.5196 17.8946 16.7071 17.7071C16.8946 17.5196 17 17.2652 17 17V13.5L21 17.5V6.5L17 10.5ZM8 15V9L12.5 12L8 15Z"></path> </g></svg>
             </div>
             <h6 className="mb-3 text-xl font-bold leading-5">Dynamic Interaction</h6>
             <p className="mb-3 text-sm text-gray-900">
