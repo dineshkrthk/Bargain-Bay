@@ -4,7 +4,7 @@ import Footer from './Footer'
 
 const index = ({children}:any) => {
   return (
-    <div className='max-w-[2200px] mx-auto'>
+    <div className='max-w-[2200px] selection:bg-yellow-200 mx-auto'>
         <Header/>
         {children}
         <Footer/>

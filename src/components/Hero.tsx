@@ -6,14 +6,14 @@ import HeroLottie from '../../public/Images/heroLottie.json'
 const inter = Bungee({ weight: ['400'], subsets: ["latin"] });
 const Hero = () => {
     return (
-        <div className='lg:mx-20 mx-5  py- flex justify-between items-center '>
+        <div className='lg:mx-20 mx-5  h- py-10 flex justify-center gap-x-40 '>
             <div>
                 <h1 className='my-4  mx-2 text-3xl lg:text-xl tracking-wider text-kesari'>Bargain Bay</h1>
                 <div className=' block lg:hidden'>
                     <Lottie animationData={HeroLottie} loop={true} />
                 </div>
                 <h2 className={inter.className}>
-                    <span className='lg:text-8xl text-4xl  selection:bg-yellow-200'>
+                    <span className='lg:text-9xl text-4xl   selection:bg-yellow-200'>
                         BUY <br className='hidden lg:block' /> SELL <br className='hidden lg:block' /> THRIVE
                     </span>
                 </h2>

@@ -7,12 +7,9 @@ import { supabase } from '@/lib/SupabaseClient';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const page = () => {
-
-  
   const [username,setusername]=useState('')
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
-
   const handlesubmit = async (e: any) => {
     try {
       e.preventDefault();

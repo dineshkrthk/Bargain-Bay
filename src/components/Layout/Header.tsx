@@ -26,7 +26,9 @@ const Header = () => {
             <div className='mx-20 hidden lg:block py-5 border-b-[2px]  '>
                 <div className='flex justify-between items-center'>
                     <div>
+                        <Link href={'/'}>
                         <Image src="/Images/logo.jpeg" height={100} width={200} alt="Logo" />
+                        </Link>
                     </div>
                     <div className='flex gap-x-20'>
                         <li className='list-none cursor-pointer text-lg'>Platform</li>
