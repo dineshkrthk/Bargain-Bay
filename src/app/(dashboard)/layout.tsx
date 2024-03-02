@@ -1,10 +1,10 @@
+import Layout from "@/components/Layout/Dashboard/Layout";
 import type { Metadata } from "next";
-import { Radley } from "next/font/google";
-import "./globals.css";
-const inter = Radley({ weight: ["400", "400"], subsets: ["latin"] });
+import { Inter } from "next/font/google";
+const inter = Inter({ weight: ["400", "400"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bargain Bay |  Reselling Platform",
+  title: "Dashboard",
   description: "Sell and Buy your products with us on our platform safely.",
 };
 
@@ -15,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }

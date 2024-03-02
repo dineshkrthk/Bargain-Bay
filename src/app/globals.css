@@ -2,11 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-.icon {
-    width: 1em;
-    height: 1em;
-    stroke: currentColor;
-    fill: none;
-    text-decoration-skip: objects;
-  }
-  
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
