@@ -12,7 +12,6 @@ const Header = () => {
       const {
         data: { user },
       } = await supabase.auth.getUser();
-      console.log(user);
       setUser(user);
     };
     getUser();
@@ -38,7 +37,9 @@ const Header = () => {
             </Link>
           </div>
           <div className="flex gap-x-20">
-            <li className="list-none cursor-pointer text-lg">Platform</li>
+            <li className="list-none cursor-pointer text-lg">
+              <Link href={"/products"}>Products</Link>
+            </li>
             <li className="list-none cursor-pointer text-lg">About</li>
             <li className="list-none cursor-pointer text-lg">Features</li>
             <li className="list-none cursor-pointer text-lg">Blog</li>
@@ -131,7 +132,9 @@ const Header = () => {
 
       {!drop ? (
         <div className="bg-white text-lg  flex flex-col px-5 py-5  gap-y-10 grid-cols-1 lg:hidden   z-50 h-full">
-          <div className="cursor-pointer">Platform</div>
+          <div className="cursor-pointer">
+            <Link href={"/products"}>Products</Link>
+          </div>
           <div className="cursor-pointer">About</div>
           <div className="cursor-pointer">Features</div>
           <div className="cursor-pointer">Blog</div>

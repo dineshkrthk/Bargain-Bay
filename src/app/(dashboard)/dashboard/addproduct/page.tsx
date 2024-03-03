@@ -123,19 +123,6 @@ const Page = () => {
 
   const SubmitProduct = async (e: any) => {
     e.preventDefault();
-    // console.log("product solved");
-    // console.log("productName:", productName);
-    // console.log("productPrice:", productPrice);
-    // console.log("description:", description);
-    // console.log("coverPhoto:", coverPhoto);
-    // console.log("state:", state);
-    // console.log("city:", city);
-    // console.log("streetAddress:", streetAddress);
-    // console.log("region:", region);
-    // console.log("postalCode:", postalCode);
-    // console.log("thumbnail:", thumbnail);
-    // console.log("imageProfile:", imageProfile);
-
     const imageName = imageProfile.name + generated(6);
     console.log(imageName);
     var { data, error } = await supabase.storage
@@ -157,9 +144,10 @@ const Page = () => {
       address: streetAddress,
       city: city,
       state: state,
-      zip_code:postalCode
+      district:region,
+      zip_code: postalCode,
     });
-    console.log(response)
+    console.log(response);
   };
 
   useEffect(() => {

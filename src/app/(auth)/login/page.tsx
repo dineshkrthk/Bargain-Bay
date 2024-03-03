@@ -6,11 +6,12 @@ import loginLottie from './loginLottie.json'
 import Link from 'next/link';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useRouter } from 'next/navigation';
 const page = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const router=useRouter()
   const handleSubmit = async (e: any) => {
     try {
       e.preventDefault();
@@ -21,6 +22,9 @@ const page = () => {
       console.log({ data, error });
       if(error){
         toast("Error during login!")
+      }
+      else{
+        router.push('/dashboard')
       }
     } catch (error) {
       toast("Error during login!")
