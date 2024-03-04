@@ -10,11 +10,11 @@ const Layout = ({
   return (
     <div>
       <Header />
-      <div className="flex justify-between">
+      <div className="flex justify-start">
         <div className="w-[14%] ">
           <Sidebar />
         </div>
-        <div className="w-[86%]   pt-10">{children}</div>
+        <div className="  pt-10">{children}</div>
       </div>
     </div>
   );
