@@ -10,7 +10,7 @@ const Layout = ({
   return (
     <div>
       <Header />
-      <div className="flex justify-start">
+      <div className="flex justify-start gap-x-10">
         <div className="w-[14%] ">
           <Sidebar />
         </div>
