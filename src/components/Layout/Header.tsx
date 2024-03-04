@@ -46,8 +46,11 @@ const Header = () => {
           </div>
           <div>
             {userdata ? (
-              <div onClick={logout}>
-                <Button variant="primary">Logout</Button>
+              <div className="flex items-center gap-x-5">
+                <div onClick={logout}>
+                  <Button variant="primary">Logout</Button>
+                </div>
+                <Button variant="primary"><Link href={'/dashboard'}>Dashboard</Link></Button>
               </div>
             ) : (
               <Link href={"/login"}>
