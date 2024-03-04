@@ -1,5 +1,6 @@
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -51,7 +52,9 @@ const Header = () => {
                   alt="Windster Logo"
                 />
                 <span className="self-center whitespace-nowrap">
+                  <Link href={'/'}>
                   Bargain Bay
+                  </Link>
                 </span>
               </a>
             </div>
