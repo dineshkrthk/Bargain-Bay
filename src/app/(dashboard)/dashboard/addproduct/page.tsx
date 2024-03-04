@@ -15,7 +15,9 @@ const Page = () => {
   const [thumbnail, setThumbnail] = useState<any>(null);
   const [imageProfile, setImageProfile] = useState<any>(null);
   const [user, setUser] = useState<any>(null);
-
+  const [category, setCategory] = useState<any>(null);
+  const [phoneNumber, setPhoneNumber] = useState<any>(null);
+  const [name, setName] = useState("Electronics");
   const router = useRouter();
 
   const handleProductNameChange = (e: any) => {
@@ -63,20 +65,15 @@ const Page = () => {
     setPostalCode(e.target.value);
   };
 
-  const handleDeleteImage = () => {
-    setImageProfile(null);
+  const handleCategoryChange = (e: any) => {
+    setCategory(e.target.value);
   };
 
-  const handleDrop = (e: any) => {
-    e.preventDefault();
-    const file = e.dataTransfer.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        setImageProfile(e.target.result);
-      };
-      reader.readAsDataURL(file);
-    }
+  const handlePhoneNumberChange = (e: any) => {
+    setPhoneNumber(e.target.value);
+  };
+  const handleNameChange = (e: any) => {
+    setName(e.target.value);
   };
 
   function generated(length: number) {
@@ -121,6 +118,8 @@ const Page = () => {
     "West Bengal",
   ];
 
+  const categories = ["Electronics", "Automobile"];
+
   const SubmitProduct = async (e: any) => {
     e.preventDefault();
     const imageName = imageProfile.name + generated(6);
@@ -144,8 +143,11 @@ const Page = () => {
       address: streetAddress,
       city: city,
       state: state,
-      district:region,
+      district: region,
       zip_code: postalCode,
+      category: category,
+      seller_name: name,
+      seller_phoneNumber: phoneNumber,
     });
     console.log(response);
   };
@@ -168,7 +170,7 @@ const Page = () => {
     <div className=" py-10 pr-20">
       <form onSubmit={SubmitProduct}>
         <div className="space-y-12">
-          <div className="border-b border-gray-900/10 pb-12">
+          <div className=" pb-12">
             <h2 className="text-base font-semibold leading-7 text-gray-900">
               Product Information
             </h2>
@@ -200,6 +202,38 @@ const Page = () => {
                   </div>
                 </div>
               </div>
+
+              <div className="sm:col-span-2 sm:col-start-1">
+                <label
+                  htmlFor="country"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Product Category
+                </label>
+                <div className="mt-2 ">
+                  <select
+                    id="category"
+                    name="category"
+                    value={category}
+                    onChange={handleCategoryChange}
+                    autoComplete="country-name"
+                    className="block w-full py-2 bg-white rounded-md   pl-2 text-gray-900 shadow-sm border-[1px] focus:outline-none placeholder:text-gray-400  sm:text-sm sm:leading-6"
+                  >
+                    {categories.map((item: any, index: any) => {
+                      return (
+                        <option
+                          className="cursor-pointer"
+                          key={index}
+                          value={item}
+                        >
+                          {item}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              </div>
+
               <div className="sm:col-span-4">
                 <label
                   htmlFor="username"
@@ -291,6 +325,44 @@ const Page = () => {
               <h2 className="text-base w-[500px] font-semibold leading-7 text-gray-900">
                 Personal Information
               </h2>
+
+              <div className="sm:col-span-2 sm:col-start-1">
+                <label
+                  htmlFor="city"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Name
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    autoComplete="name"
+                    value={name}
+                    onChange={handleNameChange}
+                    className="block w-full rounded-md  py-1.5 pl-2 text-gray-900 shadow-sm border-[1px] focus:outline-none placeholder:text-gray-400  sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="region"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Phone Number
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="number"
+                    name="phonenumber"
+                    id="phonenumber"
+                    value={phoneNumber}
+                    onChange={handlePhoneNumberChange}
+                    className="block w-full rounded-md  py-1.5 pl-2 text-gray-900 shadow-sm border-[1px] focus:outline-none placeholder:text-gray-400  sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
 
               <div className="sm:col-span-2 sm:col-start-1">
                 <label

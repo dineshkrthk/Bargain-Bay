@@ -1,15 +1,6 @@
-"use client";
+// "use client";
 import { supabase } from "@/lib/SupabaseClient";
-import React, { useEffect, useState } from "react";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
+// import React, { useEffect, useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import {
   Accordion,
@@ -31,34 +22,6 @@ const Card = ({ item }: any) => {
           src={item.image}
           alt="product image"
         />
-        {/* <img
-          className="peer absolute top-0 -right-96 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0 peer-hover:right-0"
-          src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-          alt="product image"
-        /> */}
-        {/* <div className="absolute  bottom-0 mb-4 flex space-x-4 w-full justify-center">
-          <div className="rounded-full h-3 w-3 bg-gray-200 border-2 border-white"></div>
-          <div className="rounded-full h-3 w-3 bg-gray-200 border-2 border-white"></div>
-          <div className="rounded-full h-3 w-3 bg-gray-200 border-2 border-white"></div>
-        </div> */}
-        {/* <svg
-          className="pointer-events-none absolute inset-x-0 bottom-5 mx-auto text-3xl text-white  transition-opacity group-hover:animate-ping group-hover:opacity-30 peer-hover:opacity-0"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          role="img"
-          width="1em"
-          height="1em"
-          preserveAspectRatio="xMidYMid meet"
-          viewBox="0 0 32 32"
-        >
-          <path
-            fill="currentColor"
-            d="M2 10a4 4 0 0 1 4-4h20a4 4 0 0 1 4 4v10a4 4 0 0 1-2.328 3.635a2.996 2.996 0 0 0-.55-.756l-8-8A3 3 0 0 0 14 17v7H6a4 4 0 0 1-4-4V10Zm14 19a1 1 0 0 0 1.8.6l2.7-3.6H25a1 1 0 0 0 .707-1.707l-8-8A1 1 0 0 0 16 17v12Z"
-          />
-        </svg> */}
-        {/* <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
-          39% OFF
-        </span> */}
       </a>
       <div className="mt-4 px-5 pb-5">
         <a href="#">
@@ -84,17 +47,23 @@ const Card = ({ item }: any) => {
   );
 };
 
-const page = () => {
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const [products, setProducts] = useState<any>(null);
-  useEffect(() => {
-    const getProducts = async () => {
-      const { data, error } = await supabase.from("products").select();
-      console.log(data);
-      setProducts(data);
-    };
-    getProducts();
-  }, []);
+async function getData(){
+   const { data, error } = await supabase.from("products").select();
+   
+   return data
+}
+const page = async() => {
+  // const [products, setProducts] = useState<any>(null);
+  // useEffect(() => {
+  //   const getProducts = async () => {
+  //     const { data, error } = await supabase.from("products").select();
+  //     setProducts(data);
+  //   };
+  //   getProducts();
+  // }, []);
+  const products = await getData();
+ 
+
   return (
     <div className="lg:mx-20 mx-5    py-10  ">
       <div>
@@ -132,7 +101,7 @@ const page = () => {
             </AccordionItem>
           </Accordion>
 
-          <Accordion type="single" className="mt-5" collapsible>
+          <Accordion type="single" className="mt-5" collapsible >
             <AccordionItem value="item-1">
               <AccordionTrigger className="">Category</AccordionTrigger>
               <AccordionContent className="flex flex-col gap-5">

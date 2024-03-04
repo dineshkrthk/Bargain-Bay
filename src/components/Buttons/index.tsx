@@ -98,6 +98,7 @@ type PROPS_TYPE = {
   variant: keyof typeof VARIANT_CLASSNAME;
   className?: string;
   iconName?: IconName | null;
+  onClick?: () => void;
 };
 
 
@@ -111,15 +112,24 @@ export default function Button({
   children,
   iconName,
   className,
+  onClick,
   ...props
 }: PropsWithChildren<PROPS_TYPE>) {
-
   const SvgComponent = iconName ? svgComponents[iconName] : null;
 
   return (
-    <button className={`${VARIANT_CLASSNAME[variant]} ${BASE_CLASS} ${className}`} {...props}>
-      {SvgComponent ? <div> <SvgComponent {...props} /> </div> : null}
+    <button
+      className={`${VARIANT_CLASSNAME[variant]} ${BASE_CLASS} ${className}`}
+      {...props}
+      onClick={onClick}
+    >
+      {SvgComponent ? (
+        <div>
+          {" "}
+          <SvgComponent {...props} />{" "}
+        </div>
+      ) : null}
       {children ? <span>{children}</span> : null}
     </button>
-  )
+  );
 }
