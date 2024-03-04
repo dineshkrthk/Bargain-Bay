@@ -43,7 +43,7 @@ const Header = () => {
                 </svg>
               </button>
               <a
-                href="#"
+                href="/"
                 className="text-xl font-bold flex items-center lg:ml-2.5"
               >
                 <img
@@ -52,9 +52,7 @@ const Header = () => {
                   alt="Windster Logo"
                 />
                 <span className="self-center whitespace-nowrap">
-                  <Link href={'/'}>
                   Bargain Bay
-                  </Link>
                 </span>
               </a>
             </div>

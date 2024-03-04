@@ -150,6 +150,9 @@ const Page = () => {
       seller_phoneNumber: phoneNumber,
     });
     console.log(response);
+    if(response.data){
+      router.push('/dashboard')
+    }
   };
 
   useEffect(() => {
