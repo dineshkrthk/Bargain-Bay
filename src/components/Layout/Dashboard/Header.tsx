@@ -1,8 +1,20 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
+import { supabase } from "@/lib/SupabaseClient";
 
 const Header = () => {
+  const [userdata, setUser] = useState<any>(null);
+  useEffect(() => {
+    const getUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setUser(user);
+    };
+    getUser();
+  }, []);
   return (
     <div>
       <nav className="bg-white fixed  border-b border-gray-200  z-30 w-full">
@@ -59,7 +71,7 @@ const Header = () => {
             <div className="flex items-center">
               <div className="hidden lg:flex items-center">
                 <span className="text-base flex items-center gap-x-2 font-normal text-gray-500 mr-5">
-                  Welcome, Deep{" "}
+                  Welcome, {userdata?.user_metadata?.name}{" "}
                   <Avatar className="w-8 h-8">
                     <AvatarImage src="https://github.com/shadcn.png" />
                     <AvatarFallback>CN</AvatarFallback>
