@@ -3,8 +3,8 @@ import React from "react";
 
 const Sidebar = () => {
   return (
-    <div className="min-h-screen flex flex-col   antialiased bg-gray-50 text-gray-800">
-      <div className="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r">
+    <div className="min-h-screen     bg-gray-50 text-gray-800">
+      <div className=" flex flex-col min-h-screen top-0 left-0 w-64 bg-white h-full border-r">
         <div className="flex items-center justify-center h-14 border-b">
           <div>Sidebar Navigation By iAmine</div>
         </div>
