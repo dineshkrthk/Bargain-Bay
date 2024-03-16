@@ -9,6 +9,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Person, Phone, Rupee } from "@/components/SVG";
+import OfferMaker from "@/components/Molecules/OfferMaker";
 
 async function getProduct(productid: string) {
   const { data, error } = await supabase
@@ -31,14 +33,14 @@ const Display = (item: any) => {
 
   return (
     <div>
-      <div className="lg:mx-20  mx-5    py-10 flex justify-center gap-x-10">
-        <div className="w-1/2">
+      <div className="lg:mx-20  mx-5    py-10 flex  lg:flex-row flex-col gap-y-5 justify-center gap-x-10">
+        <div className="lg:w-1/2 w-full">
           <img
             className="w-full"
             src={item.response.image}
             alt="image not loading"
           />
-          <div className="grid grid-flow-row grid-cols-4 items-center gap-x-5 my-5 bg-white shadow-lg">
+          <div className="grid grid-flow-row lg:grid-cols-4 grid-cols-1 items-center gap-x-5 my-5 bg-white shadow-lg">
             <div className="relative cursor-pointer flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-yellow-300 pr-6">
               <span className="inline-flex justify-center items-center ml-4">
                 <svg
@@ -131,49 +133,14 @@ const Display = (item: any) => {
               </span>
             </div>
           </div>
-          <Dialog>
-            <DialogTrigger className="w-full bg-yellow-200 mt-4 py-2  font-medium text-xl">
-              Make Offer{" "}
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle className="leading-relaxed">
-                  Want to make offer for <br /> {item.response.product_name}?
-                </DialogTitle>
-
-                <DialogDescription className="mt-10">
-                  <div className="text-xs my-2 text-gray-700">
-                    Tell the price you want to offer the seller <br />
-                    The price will only be visible to the seller only
-                  </div>
-                  <div className="flex flex-col">
-                    <label
-                      htmlFor="price"
-                      className="mt-4 mb-1 uppercase  text-xs "
-                    >
-                      Price
-                    </label>
-                    <div className="flex flex-row border-grey-lighter border">
-                      <span className="flex items-center bg-grey-lighter rounded rounded-r-none px-3  ">
-                        &#8377;
-                      </span>
-                      <input
-                        type="number"
-                        name="price"
-                        className="bg-grey-lighter  py-2  rounded   focus:outline-none rounded-l-none "
-                      />
-                    </div>
-                  </div>
-                  <button className="w-full bg-yellow-200 mt-4 py-2  font-medium text-lg">
-                    Submit Offer
-                  </button>
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog>
+          <OfferMaker
+            id={item.response.id}
+            product_name={item.response.product_name}
+            item={item}
+          />
         </div>
 
-        <div className="w-1/2">
+        <div className="lg:w-1/2 w-full">
           <h1 className="text-3xl font-semibold mb-4">
             {item.response.product_name}
           </h1>

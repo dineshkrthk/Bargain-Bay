@@ -14,7 +14,7 @@ const Layout = ({
         <div className="w-[14%] ">
           <Sidebar />
         </div>
-        <div className="  pt-10">{children}</div>
+        <div className=" w-[80%] pt-10">{children}</div>
       </div>
     </div>
   );

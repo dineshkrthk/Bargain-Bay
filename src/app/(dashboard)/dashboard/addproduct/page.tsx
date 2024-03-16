@@ -150,8 +150,8 @@ const Page = () => {
       seller_phoneNumber: phoneNumber,
     });
     console.log(response);
-    if(response.data){
-      router.push('/dashboard')
+    if (response.data) {
+      router.push("/dashboard");
     }
   };
 
@@ -170,7 +170,7 @@ const Page = () => {
   }, []);
 
   return (
-    <div className=" py-10 pr-20">
+    <div className=" py-10 pr-20 pl-32">
       <form onSubmit={SubmitProduct}>
         <div className="space-y-12">
           <div className=" pb-12">
