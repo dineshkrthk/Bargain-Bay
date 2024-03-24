@@ -18,7 +18,7 @@ const Page = () => {
   const [category, setCategory] = useState<any>("Bike");
   const [phoneNumber, setPhoneNumber] = useState<any>(null);
   const [name, setName] = useState("");
-  const [used,setUsed]=useState('')
+  const [used, setUsed] = useState("");
   const router = useRouter();
 
   const handleProductNameChange = (e: any) => {
@@ -151,9 +151,8 @@ const Page = () => {
       seller_phoneNumber: phoneNumber,
     });
     console.log(response);
-    if (response.data) {
-      router.push("/dashboard");
-    }
+    router.replace("/dashboard/addproduct");
+    location.reload()
   };
 
   useEffect(() => {
@@ -261,8 +260,6 @@ const Page = () => {
                     />
                   </div>
                 </div>
-
-                
               </div>
 
               <div className="col-span-full">

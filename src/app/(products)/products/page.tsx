@@ -86,6 +86,7 @@ async function getData() {
 
   return data;
 }
+export const dynamic = "force-dynamic";
 const page = async () => {
   const products = await getData();
 
