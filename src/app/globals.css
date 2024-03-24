@@ -12,3 +12,9 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+.header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}

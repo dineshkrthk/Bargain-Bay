@@ -15,9 +15,10 @@ const Page = () => {
   const [thumbnail, setThumbnail] = useState<any>(null);
   const [imageProfile, setImageProfile] = useState<any>(null);
   const [user, setUser] = useState<any>(null);
-  const [category, setCategory] = useState<any>(null);
+  const [category, setCategory] = useState<any>("Bike");
   const [phoneNumber, setPhoneNumber] = useState<any>(null);
-  const [name, setName] = useState("Electronics");
+  const [name, setName] = useState("");
+  const [used,setUsed]=useState('')
   const router = useRouter();
 
   const handleProductNameChange = (e: any) => {
@@ -118,7 +119,7 @@ const Page = () => {
     "West Bengal",
   ];
 
-  const categories = ["Electronics", "Automobile"];
+  const categories = ["Bike", "Car", "Head Phone", "Laptop", "Phone", "TV"];
 
   const SubmitProduct = async (e: any) => {
     e.preventDefault();
@@ -170,7 +171,7 @@ const Page = () => {
   }, []);
 
   return (
-    <div className=" py-10 pr-20 pl-32">
+    <div className=" py-10 pr-20 pl-10">
       <form onSubmit={SubmitProduct}>
         <div className="space-y-12">
           <div className=" pb-12">
@@ -260,6 +261,8 @@ const Page = () => {
                     />
                   </div>
                 </div>
+
+                
               </div>
 
               <div className="col-span-full">

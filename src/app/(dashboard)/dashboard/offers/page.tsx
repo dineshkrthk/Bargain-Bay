@@ -47,7 +47,11 @@ const page = async () => {
               return (
                 <TableRow key={index}>
                   <TableCell className="font-medium flex items-center gap-x-2">
-                    <img className="h-10 w-10" src={item.product_image} alt="" />
+                    <img
+                      className="h-10 w-10"
+                      src={item.product_image}
+                      alt=""
+                    />
                     {item.product_name}
                   </TableCell>
                   <TableCell>{item.sender_name}</TableCell>

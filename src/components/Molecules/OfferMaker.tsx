@@ -43,31 +43,19 @@ const OfferMaker: React.FC<OfferMakerProps> = ({ product_name, id, item }) => {
   return (
     <div>
       {" "}
-      <Dialog open={open}>
+      <Dialog >
         <DialogTrigger
-          onClick={() => {
-            setOpen(!open);
-          }}
           className="w-full bg-yellow-200 mt-4 py-2  font-medium text-xl"
         >
           Make Offer{" "}
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <button
-              onClick={() => {
-                setOpen(!open);
-              }}
-              className="absolute right-0 mr-5 translate-y-[-10px]"
-            >
-              {" "}
-              <Cross />
-            </button>
             <DialogTitle className="leading-relaxed">
               Want to make offer for <br /> {product_name}?
             </DialogTitle>
 
-            <DialogDescription className="mt-10">
+            <DialogDescription className="mt-10 w-[600px]">
               <div className="text-xs my-2 text-gray-700">
                 Tell the price you want to offer the seller <br />
                 The price will only be visible to the seller only
