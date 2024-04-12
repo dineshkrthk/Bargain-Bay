@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.3.1",
-    "@lobehub/ui": "^1.135.4",
+    "@lobehub/ui": "^1.138.1",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-checkbox": "^1.0.4",

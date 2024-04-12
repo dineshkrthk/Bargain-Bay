@@ -154,7 +154,7 @@ const AISearch = ({ children, products }: any) => {
             ) : null}
 
             {steps == 2 ? (
-              <ScrollArea className="h-[500px]  w-[800px] pr-5">
+              <ScrollArea className="h-[500px]  min-w-[800px] pr-5">
                 {!markdown ? (
                   <div>
                     <Lottie

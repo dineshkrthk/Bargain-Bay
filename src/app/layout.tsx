@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lexend } from "next/font/google";
 import "./globals.css";
-const inter = Inter({ weight: ["400", "400"], subsets: ["latin"] });
+const inter = Lexend({ weight: ["400", "400"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Bargain Bay |  Reselling Platform",
