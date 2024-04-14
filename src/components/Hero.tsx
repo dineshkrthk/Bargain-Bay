@@ -3,7 +3,7 @@ import { Bungee } from "next/font/google";
 import Lottie from "lottie-react";
 import Button from '@/components/Buttons';
 import HeroLottie from '../../public/Images/heroLottie.json'
-const inter = Bungee({ weight: ['400'], subsets: ["latin"] });
+const inter = Bungee({ weight: ['400','400'], subsets: ["latin"] });
 const Hero = () => {
     return (
         <div className='lg:mx-20 mx-5  h- py-10 flex justify-center gap-x-40 '>

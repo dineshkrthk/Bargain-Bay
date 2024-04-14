@@ -9,15 +9,23 @@ import {
   ChatSendButton,
   TokenTag,
 } from "@lobehub/ui";
-import { Delete, Eraser, Languages, Send } from "lucide-react";
+import { Delete, Eraser, Languages, Send, Video } from "lucide-react";
 import { Flexbox } from "react-layout-kit";
 import { supabase } from "@/lib/SupabaseClient";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { RealtimePostgresInsertPayload } from "@supabase/supabase-js";
+
+interface Message {
+  id: string;
+  message: string;
+}
 
 const Page = ({ params }: { params: { id: string } }) => {
   const [receiver, setReceiver] = useState<any>(null);
   const [messages, setMessages] = useState<any>([]);
   const [senderID, setSenderID] = useState<any>("");
+  const router = useRouter();
 
   useLayoutEffect(() => {
     const getReceiver = async () => {
@@ -44,14 +52,12 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   useLayoutEffect(() => {
     async function getMessages() {
-      if (!senderID || !receiver) {
+      if (!senderID) {
         return;
       }
-      const { data, error } = await supabase
-        .from("messages")
-        .select("*")
-        .or(`sender_id.eq.${senderID},receiver_id.eq.${receiver.id}`)
-        .or(`sender_id.eq.${receiver.id},receiver_id.eq.${senderID}`);
+      const { data, error } = await supabase.from("messages").select("*");
+      // .or(`sender_id.eq.${senderID},receiver_id.eq.${params.id}`)
+      // .or(`sender_id.eq.${params.id},receiver_id.eq.${senderID}`);
 
       if (error) {
         console.error("Error fetching messages:", error);
@@ -62,11 +68,29 @@ const Page = ({ params }: { params: { id: string } }) => {
     }
 
     getMessages();
-  }, [senderID, receiver]);
+  }, [senderID]);
+
+  useEffect(() => {
+    const subscription = supabase
+      .channel("messages")
+      .on(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "messages" },
+        (payload: RealtimePostgresInsertPayload<{ [key: string]: any }>) => {
+          setMessages((prevMessages: any) => [...prevMessages, payload.new]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   const [content, setContent] = useState<string>("");
 
   const handleSubmit = async () => {
+    if (!content.trim()) return;
     const { error, data } = await supabase.from("messages").insert({
       content: content,
       sender_id: senderID,
@@ -77,7 +101,6 @@ const Page = ({ params }: { params: { id: string } }) => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter") {
-      // Handle the Enter key press event here, for example, sending the message
       handleSubmit();
     }
   };
@@ -85,6 +108,9 @@ const Page = ({ params }: { params: { id: string } }) => {
   const handleErase = () => {
     setContent("");
   };
+
+ 
+
   return (
     <ThemeProvider themeMode="light">
       <div className="flex justify-start w-full h-screen">
@@ -102,8 +128,66 @@ const Page = ({ params }: { params: { id: string } }) => {
           </div>
         </div>
         <div className="w-10/12">
-          <div className="h-[7%] w-full bg-neutral-100 border-b shadow-sm"></div>
-          <div className="h-[73%]"></div>
+          <div className="h-[7%] w-full flex items-center justify-start px-3 bg-neutral-100 border-b shadow-sm">
+            <img
+              src="https://lh4.googleusercontent.com/proxy/XZjBQs671YZjpKSHu4nOdgKygc5oteGGQ4nznFtymv2Vr1t6lHDdhqPe-Pk-8IJe7pW4AhhKOTWRVt_b6G4qHF92n7Z1QCMVCNXCP2yayQrC-6Fichft"
+              alt=""
+              className="rounded-full h-12 w-12"
+            />
+            <span className="text-xl font-medium mx-3">{receiver?.name}</span>
+          </div>
+          <div className="overflow-hidden py-4 h-[73%]">
+            <div className="h-full overflow-y-auto">
+              <div className="grid grid-cols-12 gap-y-2">
+                {messages.map((item: any, index: any) => {
+                  if (
+                    item.receiver_id == params.id &&
+                    item.sender_id == senderID
+                  ) {
+                    return (
+                      <div
+                        key={index}
+                        className="col-start-6 col-end-13 p-3 rounded-lg"
+                      >
+                        <div className="flex items-center justify-start flex-row-reverse">
+                          <img
+                            src="https://png.pngtree.com/thumb_back/fh260/background/20230612/pngtree-man-wearing-glasses-is-wearing-colorful-background-image_2905240.jpg"
+                            alt=""
+                            className="h-10 w-10 rounded-full"
+                          />
+                          <div className="relative mr-3 text-sm bg-indigo-100 py-2 px-4 shadow rounded-xl">
+                            <div>{item.content}</div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+                  if (
+                    item.receiver_id == senderID &&
+                    item.sender_id == params.id
+                  ) {
+                    return (
+                      <div
+                        key={index}
+                        className="col-start-1 col-end-8 p-3 rounded-lg"
+                      >
+                        <div className="flex flex-row items-center">
+                          <img
+                            src="https://lh4.googleusercontent.com/proxy/XZjBQs671YZjpKSHu4nOdgKygc5oteGGQ4nznFtymv2Vr1t6lHDdhqPe-Pk-8IJe7pW4AhhKOTWRVt_b6G4qHF92n7Z1QCMVCNXCP2yayQrC-6Fichft"
+                            alt=""
+                            className="rounded-full h-10 w-10"
+                          />
+                          <div className="relative ml-3 text-sm bg-white py-2 px-4 shadow rounded-xl">
+                            <div>{item.content}</div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+                })}
+              </div>
+            </div>
+          </div>
 
           <Flexbox className="h-[20%] relative border">
             <div style={{ flex: 1 }}></div>
@@ -120,7 +204,13 @@ const Page = ({ params }: { params: { id: string } }) => {
                     <>
                       <ActionIcon icon={Eraser} onClick={handleErase} />
                       <ActionIcon icon={Send} onClick={handleSubmit} />
-                      <EmojiPicker backgroundColor="white"  onChange={(emoji)=>{setContent(content+emoji)}} />
+                      <ActionIcon icon={Video} />
+                      <EmojiPicker
+                        backgroundColor="white"
+                        onChange={(emoji) => {
+                          setContent(content + emoji);
+                        }}
+                      />
                       <TokenTag maxValue={500} value={content.length} />
                     </>
                   }
