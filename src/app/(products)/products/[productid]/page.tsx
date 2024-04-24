@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import { Person, Phone, Rupee } from "@/components/SVG";
 import OfferMaker from "@/components/Molecules/OfferMaker";
+import Link from "next/link";
 
 async function getProduct(productid: string) {
   const { data, error } = await supabase
@@ -31,9 +32,10 @@ const Display = (item: any) => {
       </div>
     ));
 
+  console.log(item.response);
   return (
     <div>
-      <div className="lg:mx-20  mx-5    py-10 flex  lg:flex-row flex-col gap-y-5 justify-center gap-x-10">
+      <div className="lg:mx-20  mx-5    py-10 lg:flex block lg:flex-row flex-col gap-y-5 justify-center gap-x-10">
         <div className="lg:w-1/2 w-full">
           <img
             className="w-full"
@@ -157,8 +159,25 @@ const Display = (item: any) => {
             </span>
           </div>
 
-          <h2 className="text-lg font-medium mb-1 ">Description</h2>
+          <Link
+            href={`/chat/` + item.response.user_id}
+            className="flex cursor-pointer hover:shadow-yellow-200 hover:shadow-lg transition-all duration-200  flex-row p-4 my-4 gap-x-4 items-center shadow"
+          >
+            <img
+              src="https://wallpapers.com/images/hd/cool-profile-picture-87h46gcobjl5e4xu.jpg"
+              alt=""
+              className="h-16 w-16 rounded-full"
+            />
+            <div className="flex flex-col gap-y-1">
+              <span>{item.response.seller_name}</span>
+              <span>Chat with user</span>
+            </div>
+          </Link>
+
+          <h2 className="text-2xl font-medium mb-1 ">Description</h2>
           <h2 className="font-thin"> {formattedText}</h2>
+
+          <div></div>
         </div>
       </div>
     </div>
