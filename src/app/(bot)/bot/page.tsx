@@ -58,6 +58,7 @@ export default function Home() {
           .startChat({
             generationConfig,
             safetySettings,
+            // @ts-ignore
             history: messages.map((msg) => ({
               text: msg.text,
               role: msg.role,
